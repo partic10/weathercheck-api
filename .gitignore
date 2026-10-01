@@ -1,0 +1,40 @@
+# WeatherCheck API
+
+A small API for the Build Logic weather-check game, with HTTP transmitters and 8 lights.
+
+## Requirements
+
+- `Cookie: test=1` is included in transmitters
+- `User-Agent` is forbidden
+- GET and POST transmitters are exposed
+
+## Endpoints
+
+- GET `/api/health`
+- GET `/api/weather`
+- POST `/api/weather/fetch`
+- GET `/api/lights`
+- POST `/api/lights/:id/toggle`
+- POST `/api/lights/weather-mode`
+- POST `/api/lights/on`
+- POST `/api/lights/off`
+- GET `/api/transmitters`
+
+## Example
+
+```bash
+curl -X POST http://localhost:3000/api/weather/fetch \
+  -H "Cookie: test=1" \
+  -H "Content-Type: application/json" \
+  -d '{"location":"London"}'
+```
+
+```bash
+curl -X POST http://localhost:3000/api/lights/weather-mode \
+  -H "Cookie: test=1"
+```
+
+## Notes
+
+- Requests with a `User-Agent` header receive 403
+- light IDs range from 0 to 7
